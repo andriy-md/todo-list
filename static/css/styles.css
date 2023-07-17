@@ -1,0 +1,24 @@
+body {
+    margin-top: 20px;
+}
+
+.link-to-page {
+    float: right;
+    margin: 0 2px 0 2px;
+}
+
+.task-content {
+    font-weight: bold;
+}
+
+.is_done {
+    color: blue;
+}
+
+.tag {
+    color: grey;
+}
+
+.deadline {
+    color: brown
+}
