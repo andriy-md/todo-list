@@ -26,14 +26,12 @@ class TaskUpdateView(generic.UpdateView):
     form_class = TaskForm
 
 
-def update_task_status(request, pk):
-    task = get_object_or_404(Task, id=pk)
-    if task.is_done:
-        task.is_done = False
-    else:
-        task.is_done = True
-    task.save()
-    return HttpResponseRedirect(reverse("todo:home-page"))
+class TaskStatusUpdateView(generic.View):
+    def get(self, request, pk):
+        task = get_object_or_404(Task, id=pk)
+        task.is_done = not task.is_done
+        task.save()
+        return HttpResponseRedirect(reverse("todo:home-page"))
 
 
 class TaskDeleteView(generic.DeleteView):
