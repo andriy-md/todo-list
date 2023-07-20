@@ -27,7 +27,7 @@ class TaskUpdateView(generic.UpdateView):
 
 
 class TaskStatusUpdateView(generic.View):
-    def get(self, request, pk):
+    def post(self, request, pk):
         task = get_object_or_404(Task, id=pk)
         task.is_done = not task.is_done
         task.save()

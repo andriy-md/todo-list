@@ -30,7 +30,10 @@
         </p>
       </td>
       <td>
-        <a href="{% url 'todo:task-update-status' pk=task.id %}">{{ task.is_done|transform_task_status }}</a>
+        <form action="{% url 'todo:task-update-status' pk=task.id %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="{{ task.is_done|transform_task_status }}">
+        </form>
       </td>
     </tr>
     {% endfor %}
